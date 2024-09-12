@@ -21,6 +21,9 @@
   programs.ripgrep.enable = true;
   programs.bat.enable = true;
   programs.eza.enable = true;
+
+  # for fish
+  programs.man.generateCaches = true;
   programs.fish = {
     enable = true;
 

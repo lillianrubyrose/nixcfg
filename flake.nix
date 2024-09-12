@@ -9,6 +9,11 @@
 
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
+    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, disko, home-manager, ... } @inputs:
@@ -27,6 +32,7 @@
         inherit system;
         specialArgs = {
           inherit inputs;
+          inherit system;
           inherit pkgs;
           inherit pkgs-unstable;
           inherit home-manager;
@@ -39,6 +45,7 @@
           {
             home-manager = {
               extraSpecialArgs = {
+                inherit inputs;
                 inherit pkgs;
                 inherit pkgs-unstable;
               };
@@ -53,6 +60,17 @@
       nixosConfigurations = {
         vm = mkSystem [
           ./hosts/vm/configuration.nix
+          ./modules/lily.nix
+          ./modules/hyprland.nix
+          ./modules/plasma.nix
+          {
+            home-manager.users.lily = import ./home/lily.nix;
+          }
+        ];
+
+        # desktop
+        nya = mkSystem [
+          ./hosts/nya/configuration.nix
           ./modules/lily.nix
           ./modules/hyprland.nix
           {
