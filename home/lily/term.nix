@@ -1,6 +1,7 @@
 { ... }:
 
 {
+  programs.kitty.enable = true;
   programs.fastfetch.enable = true;
   programs.hyfetch = {
     enable = true;

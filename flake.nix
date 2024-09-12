@@ -54,6 +54,7 @@
         vm = mkSystem [
           ./hosts/vm/configuration.nix
           ./modules/lily.nix
+          ./modules/hyprland.nix
           {
             home-manager.users.lily = import ./home/lily.nix;
           }
