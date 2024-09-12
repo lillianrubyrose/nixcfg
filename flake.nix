@@ -22,27 +22,42 @@
          inherit system;
          config.allowUnfree = true;
       };
+
+      mkSystem = extraModules: nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
+          inherit pkgs;
+          inherit pkgs-unstable;
+          inherit home-manager;
+        };
+
+        modules = [
+          ./modules/common.nix
+          home-manager.nixosModules.home-manager
+          disko.nixosModules.disko
+          {
+            home-manager = {
+              extraSpecialArgs = {
+                inherit pkgs;
+                inherit pkgs-unstable;
+              };
+
+              useGlobalPkgs = true;
+              useUserPackages = true;
+            };
+          }
+        ] ++ extraModules;
+      };
     in {
       nixosConfigurations = {
-        vm = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit pkgs;
-          };
-
-          modules = [
-            ./modules/common.nix
-            ./hosts/vm/configuration.nix
-            disko.nixosModules.disko
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.lily = import ./users/lily.nix;
-            }
-          ];
-        };
+        vm = mkSystem [
+          ./hosts/vm/configuration.nix
+          ./modules/lily.nix
+          {
+            home-manager.users.lily = import ./home/lily.nix;
+          }
+        ];
       };
     };
 }
