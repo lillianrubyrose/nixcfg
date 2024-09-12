@@ -11,5 +11,5 @@
   services.openssh.enable = true;
   networking.firewall.allowedTCPPorts = [ 22 25565 ];
 
-  networking.hostName = "vm";
+  networking.hostName = "nya";
 }
