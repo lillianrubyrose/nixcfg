@@ -13,7 +13,20 @@
 
   environment.systemPackages = with pkgs; [
     waybar # bar
-
     gnome.nautilus # file manager
+
+    # misc
+    xdg-utils
+    wl-clipboard
   ];
+
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+
+    config = {
+      common.default = [ "wlr" "gtk" ];
+    };
+  };
 }

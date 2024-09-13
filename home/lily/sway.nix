@@ -5,6 +5,7 @@
     enable = true;
     package = pkgs.swayfx;
     checkConfig = false; # until https://github.com/nix-community/home-manager/issues/5379
+    wrapperFeatures.gtk = true;
     config = {
       modifier = "Mod4";
       terminal = "kitty";
@@ -12,10 +13,11 @@
       gaps.inner = 3;
 
       output = {
+        "*".bg = "~/.config/sway/bg.jpg fill";
+      
         "DP-1" = {
           mode = "3840x2160@240Hz";
           scale = "1.5";
-          bg = "~/.config/sway/bg.jpg fill";
         };
         "DP-2" = {
           mode = "1920x1080@164.917Hz";
@@ -38,6 +40,6 @@
   };
 
   home.file.".config/sway/bg.jpg" = {
-    source = ../../hosts/grub-splash.jpg;
+    source = ../../assets/wallpaper.jpg;
   };
 }
