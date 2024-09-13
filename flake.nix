@@ -13,10 +13,10 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    hyprland.url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
+    nixos-hardware.url = "github:NixOS/nixos-hardware/master";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, disko, home-manager, ... } @inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, disko, home-manager, nixos-hardware, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -61,7 +61,6 @@
         vm = mkSystem [
           ./hosts/vm/configuration.nix
           ./modules/lily.nix
-          ./modules/hyprland.nix
           ./modules/plasma.nix
           {
             home-manager.users.lily = import ./home/lily.nix;
@@ -73,6 +72,9 @@
           ./hosts/nya/configuration.nix
           ./modules/lily.nix
           ./modules/hyprland.nix
+          ./modules/yubikey.nix
+          nixos-hardware.nixosModules.common-cpu-amd
+          nixos-hardware.nixosModules.common-gpu-amd
           {
             home-manager.users.lily = import ./home/lily.nix;
           }
