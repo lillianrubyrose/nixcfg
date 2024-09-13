@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  imports = [ ./ollama.nix ];
+
   programs.fish.enable = true;
   users.users.lily = {
     isNormalUser = true;
