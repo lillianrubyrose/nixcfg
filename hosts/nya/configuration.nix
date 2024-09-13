@@ -1,10 +1,10 @@
-{ ... }:
+{ pkgs, ... }:
 
 {
   imports =
     [
       ../grub.nix
-      # ./hardware-configuration.nix
+      ./hardware-configuration.nix
       ./disko-config.nix
     ];
 

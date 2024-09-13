@@ -27,5 +27,7 @@
     git.enable = true;
   };
 
+  security.polkit.enable = true;
+
   system.stateVersion = lib.mkDefault "24.05";
 }
