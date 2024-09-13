@@ -7,7 +7,6 @@
     ./lily/git.nix
     ./lily/term.nix
     ./lily/sway.nix
-    # ./lily/hyprland.nix
   ];
 
   home = {
