@@ -2,11 +2,12 @@
 
 {
   services.pcscd.enable = true;
+  services.dbus.packages = [ pkgs.gcr ];
   environment.systemPackages = with pkgs; [ polkit_gnome ];
 
   programs.gnupg.agent = {
     enable = true;
-    pinentryPackage = pkgs.pinentry-gtk2;
+    pinentryPackage = pkgs.pinentry-gnome3;
   };
 
   security.polkit.enable = true;
