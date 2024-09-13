@@ -13,7 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     waybar # bar
-    gnome.nautilus # file manager
+    nautilus # file manager
 
     grimblast # screenshots
 
