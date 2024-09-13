@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   wayland.windowManager.sway = {
@@ -6,11 +6,15 @@
     package = pkgs.swayfx;
     checkConfig = false; # until https://github.com/nix-community/home-manager/issues/5379
     wrapperFeatures.gtk = true;
-    config = {
+    config = rec {
       modifier = "Mod4";
       terminal = "kitty";
       gaps.outer = 5;
       gaps.inner = 3;
+
+      keybindings = lib.mkOptionDefault {
+        "${modifier}+Shift+s" = "exec ${pkgs.grimblast}/bin/grimblast copy area";
+      };
 
       output = {
         "*".bg = "~/.config/sway/bg.jpg fill";
