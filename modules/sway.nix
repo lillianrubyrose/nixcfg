@@ -15,6 +15,8 @@
     waybar # bar
     gnome.nautilus # file manager
 
+    grimblast # screenshots
+
     # misc
     xdg-utils
     wl-clipboard
