@@ -14,9 +14,11 @@
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, disko, home-manager, nixos-hardware, ... } @inputs:
+  outputs = { self, nixpkgs, nixpkgs-unstable, disko, home-manager, nixos-hardware, catppuccin, ... } @inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -42,12 +44,14 @@
           ./modules/common.nix
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
+          catppuccin.nixosModules.catppuccin
           {
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
                 inherit pkgs;
                 inherit pkgs-unstable;
+                inherit catppuccin;
               };
 
               useGlobalPkgs = true;

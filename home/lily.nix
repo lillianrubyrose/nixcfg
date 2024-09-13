@@ -1,4 +1,4 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{ lib, pkgs, pkgs-unstable, catppuccin, ... }:
 
 {
   imports = [
@@ -7,7 +7,19 @@
     ./lily/git.nix
     ./lily/term.nix
     ./lily/sway.nix
+    ./lily/helix.nix
+    catppuccin.homeManagerModules.catppuccin
   ];
+
+  catppuccin = {
+    flavor = "latte";
+    accent = "lavender";
+
+    pointerCursor = {
+      enable = true;
+      accent = "dark";
+    };
+  };
 
   home = {
     username = "lily";
@@ -19,6 +31,21 @@
       vesktop
     ]);
 
+    pointerCursor = {
+      size = 32;
+      x11.enable = true;
+      gtk.enable = true;
+    };
+
     stateVersion = "24.05";
+  };
+
+  gtk = {
+    enable = true;
+    catppuccin = {
+      enable = true;
+      gnomeShellTheme = true;
+      icon.enable = true;
+    };
   };
 }

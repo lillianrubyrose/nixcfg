@@ -4,6 +4,7 @@
   wayland.windowManager.sway = {
     enable = true;
     package = pkgs.swayfx;
+    catppuccin.enable = true;
     checkConfig = false; # until https://github.com/nix-community/home-manager/issues/5379
     wrapperFeatures.gtk = true;
     config = rec {
