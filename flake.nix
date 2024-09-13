@@ -71,7 +71,7 @@
         nya = mkSystem [
           ./hosts/nya/configuration.nix
           ./modules/lily.nix
-          ./modules/hyprland.nix
+          ./modules/sway.nix
           ./modules/yubikey.nix
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-amd
