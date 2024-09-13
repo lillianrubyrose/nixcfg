@@ -1,7 +1,22 @@
 { ... }:
 
 {
-  programs.kitty.enable = true;
+  programs.kitty = {
+    enable = true;
+    catppuccin.enable = true;
+
+    settings = {
+      tab_bar_edge = "bottom";
+      tab_bar_style = "powerline";
+      tab_powerline_style = "slanted";
+      tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
+
+      dynamic_background_opacity = "yes";
+      background_blur = "1";
+      background_opacity = "0.5";
+    };
+  };
+
   programs.fastfetch.enable = true;
   programs.hyfetch = {
     enable = true;
@@ -19,13 +34,17 @@
   };
 
   programs.ripgrep.enable = true;
-  programs.bat.enable = true;
+  programs.bat = {
+    enable = true;
+    catppuccin.enable = true;
+  };
   programs.eza.enable = true;
 
   # for fish
   programs.man.generateCaches = true;
   programs.fish = {
     enable = true;
+    catppuccin.enable = true;
 
     shellInit = ''
     function fish_greeting
@@ -39,14 +58,6 @@
       ls = "eza -lha";
       grep = "rg";
     };
-  };
-
-  home.file.".config/bat" = {
-    source = ./dots/bat;
-  };
-
-  home.file.".config/kitty" = {
-    source = ./dots/kitty;
   };
 
   home.file.".config/fish" = {

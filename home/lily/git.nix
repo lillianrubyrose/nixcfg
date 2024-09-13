@@ -7,6 +7,11 @@
     lfs.enable = true;
     ignores = [ "*~" "*.swp" ];
 
+    delta = {
+      enable = true;
+      catppuccin.enable = true;
+    };
+
     userName = "Lillian Rose";
     userEmail = "me@lillianro.se";
     extraConfig = {

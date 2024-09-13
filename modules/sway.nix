@@ -20,6 +20,8 @@
     # misc
     xdg-utils
     wl-clipboard
+
+    dconf
   ];
 
   xdg.portal = {
