@@ -41,6 +41,8 @@
     stateVersion = "24.05";
   };
 
+  qt.style.catppuccin.enable = true;
+
   gtk = {
     enable = true;
     catppuccin = {
