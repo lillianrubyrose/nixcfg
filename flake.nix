@@ -37,7 +37,6 @@
         specialArgs = {
           inherit inputs;
           inherit system;
-          inherit pkgs;
           inherit pkgs-unstable;
           inherit home-manager;
         };
@@ -51,7 +50,6 @@
             home-manager = {
               extraSpecialArgs = {
                 inherit inputs;
-                inherit pkgs;
                 inherit pkgs-unstable;
                 inherit catppuccin;
               };
