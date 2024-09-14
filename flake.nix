@@ -76,7 +76,6 @@
           ./hosts/nya/configuration.nix
           ./modules/lily.nix
           ./modules/sway.nix
-          # ./modules/plasma.nix
           ./modules/yubikey.nix
           nixos-hardware.nixosModules.common-cpu-amd
           nixos-hardware.nixosModules.common-gpu-amd
