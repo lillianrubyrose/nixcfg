@@ -13,7 +13,7 @@
 
   environment.systemPackages = with pkgs; [
     waybar # bar
-    kdePackages.dolphin # file manager
+    nautilus # file manager
 
     grimblast # screenshots
 

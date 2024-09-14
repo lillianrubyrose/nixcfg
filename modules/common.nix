@@ -25,10 +25,10 @@
 
   programs = {
     git.enable = true;
-    # gnome-disks.enable = true;
+    gnome-disks.enable = true;
   };
 
-  # services.gvfs.enable = true;
+  services.gvfs.enable = true;
 
   security.polkit.enable = true;
 
