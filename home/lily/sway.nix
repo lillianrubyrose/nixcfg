@@ -26,7 +26,7 @@
 
       output = {
         "*".bg = "~/.config/sway/bg.jpg fill";
-      
+
         "DP-1" = {
           mode = "3840x2160@240Hz";
           scale = "1.5";
@@ -39,28 +39,28 @@
     };
 
     extraConfig = ''
-    blur true
-    blur_passes 3
-    blur_radius 3
+      blur true
+      blur_passes 3
+      blur_radius 3
 
-    shadows true
-    shadow_blur_radius 10
-    shadow_color #1A1A1AEE
+      shadows true
+      shadow_blur_radius 10
+      shadow_color #1A1A1AEE
 
-    corner_radius 10
-    default_border pixel 3
+      corner_radius 10
+      default_border pixel 3
     '';
   };
 
   home.sessionVariables = {
     NIXOS_OZONE_WL = "1";
     "_JAVA_AWT_WM_NONREPARENTING" = "1";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION="1";
-    QT_QPA_PLATFORM="wayland";
-    SDL_VIDEODRIVER="wayland";
-    GDK_BACKEND="wayland";
-    XDG_SESSION_DESKTOP="sway";
-    MOZ_ENABLE_WAYLAND="1";
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    QT_QPA_PLATFORM = "wayland";
+    SDL_VIDEODRIVER = "wayland";
+    GDK_BACKEND = "wayland";
+    XDG_SESSION_DESKTOP = "sway";
+    MOZ_ENABLE_WAYLAND = "1";
   };
 
   home.file.".config/sway/bg.jpg" = {

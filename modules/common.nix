@@ -1,4 +1,9 @@
-{ lib, pkgs, pkgs-unstable, ... }:
+{
+  lib,
+  pkgs,
+  pkgs-unstable,
+  ...
+}:
 
 {
   imports = [
@@ -12,11 +17,13 @@
   networking.networkmanager.enable = true;
 
   environment = {
-    systemPackages = (with pkgs-unstable; [
-      helix # terminal editor of choice
-    ]) ++ (with pkgs; [
-      wget
-    ]);
+    systemPackages =
+      (with pkgs-unstable; [
+        helix # terminal editor of choice
+      ])
+      ++ (with pkgs; [
+        wget
+      ]);
 
     sessionVariables = {
       EDITOR = "hx";

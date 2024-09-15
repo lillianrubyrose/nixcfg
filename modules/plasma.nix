@@ -11,7 +11,9 @@
     programs.dconf.enable = true;
 
     environment.sessionVariables = {
-      NIX_PROFILES = "${pkgs.lib.concatStringsSep " " (pkgs.lib.reverseList config.environment.profiles)}";
+      NIX_PROFILES = "${pkgs.lib.concatStringsSep " " (
+        pkgs.lib.reverseList config.environment.profiles
+      )}";
     };
   };
 }

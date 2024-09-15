@@ -27,23 +27,84 @@
       };
       modules = [
         "break"
-        { key = "╭─󰌢"; keyColor = "green"; type = "host"; }
-        { key = "├─󰻠"; keyColor = "green"; type = "cpu"; }
-        { key = "├─󰍛"; keyColor = "green"; type = "gpu"; }
-        { key = "├─"; keyColor = "green"; type = "disk"; }
-        { key = "├─󰑭"; keyColor = "green"; type = "memory"; }
-        { key = "├─󰓡"; keyColor = "green"; type = "swap"; }
-        { key = "╰─󰍹"; keyColor = "green"; type = "display"; }
+        {
+          key = "╭─󰌢";
+          keyColor = "green";
+          type = "host";
+        }
+        {
+          key = "├─󰻠";
+          keyColor = "green";
+          type = "cpu";
+        }
+        {
+          key = "├─󰍛";
+          keyColor = "green";
+          type = "gpu";
+        }
+        {
+          key = "├─";
+          keyColor = "green";
+          type = "disk";
+        }
+        {
+          key = "├─󰑭";
+          keyColor = "green";
+          type = "memory";
+        }
+        {
+          key = "├─󰓡";
+          keyColor = "green";
+          type = "swap";
+        }
+        {
+          key = "╰─󰍹";
+          keyColor = "green";
+          type = "display";
+        }
         "break"
-        { key = "╭─"; keyColor = "yellow"; type = "shell"; }
-        { key = "├─"; keyColor = "yellow"; type = "terminal"; }
-        { key = "├─"; keyColor = "yellow"; type = "wm"; }
-        { key = "╰─"; keyColor = "yellow"; type = "terminalfont"; }
+        {
+          key = "╭─";
+          keyColor = "yellow";
+          type = "shell";
+        }
+        {
+          key = "├─";
+          keyColor = "yellow";
+          type = "terminal";
+        }
+        {
+          key = "├─";
+          keyColor = "yellow";
+          type = "wm";
+        }
+        {
+          key = "╰─";
+          keyColor = "yellow";
+          type = "terminalfont";
+        }
         "break"
-        { format = "{user-name}@{host-name}"; key = "╭─"; keyColor = "blue"; type = "title"; }
-        { key = "├─{icon}"; keyColor = "blue"; type = "os"; }
-        { key = "├─"; keyColor = "blue"; type = "kernel"; }
-        { key = "╰─󰅐"; keyColor = "blue"; type = "uptime"; }
+        {
+          format = "{user-name}@{host-name}";
+          key = "╭─";
+          keyColor = "blue";
+          type = "title";
+        }
+        {
+          key = "├─{icon}";
+          keyColor = "blue";
+          type = "os";
+        }
+        {
+          key = "├─";
+          keyColor = "blue";
+          type = "kernel";
+        }
+        {
+          key = "╰─󰅐";
+          keyColor = "blue";
+          type = "uptime";
+        }
       ];
     };
   };
@@ -62,9 +123,9 @@
     catppuccin.enable = true;
 
     shellInit = ''
-    function fish_greeting
-       fastfetch
-    end
+      function fish_greeting
+         fastfetch
+      end
     '';
 
     shellAliases = {

@@ -1,12 +1,11 @@
 { ... }:
 
 {
-  imports =
-    [
-      ../grub.nix
-      ./hardware-configuration.nix
-      ./disko-config.nix
-    ];
+  imports = [
+    ../grub.nix
+    ./hardware-configuration.nix
+    ./disko-config.nix
+  ];
 
   networking.hostName = "vm";
 

@@ -20,48 +20,61 @@
     catppuccin.url = "github:catppuccin/nix";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, disko, home-manager, nixos-hardware, catppuccin, ... } @inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      nixpkgs-unstable,
+      disko,
+      home-manager,
+      nixos-hardware,
+      catppuccin,
+      ...
+    }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
-         inherit system;
-         config.allowUnfree = true;
+        inherit system;
+        config.allowUnfree = true;
       };
       pkgs-unstable = import nixpkgs-unstable {
-         inherit system;
-         config.allowUnfree = true;
-      };
-
-      mkSystem = extraModules: nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit system;
-          inherit pkgs-unstable;
-          inherit home-manager;
-        };
-
-        modules = [
-          ./modules/common.nix
-          home-manager.nixosModules.home-manager
-          disko.nixosModules.disko
-          catppuccin.nixosModules.catppuccin
-          {
-            home-manager = {
-              extraSpecialArgs = {
-                inherit inputs;
-                inherit pkgs-unstable;
-                inherit catppuccin;
-              };
-
-              useGlobalPkgs = true;
-              useUserPackages = true;
-              backupFileExtension = "hm-bak";
-            };
-          }
-        ] ++ extraModules;
+        config.allowUnfree = true;
       };
-    in {
+
+      mkSystem =
+        extraModules:
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {
+            inherit inputs;
+            inherit system;
+            inherit pkgs-unstable;
+            inherit home-manager;
+          };
+
+          modules = [
+            ./modules/common.nix
+            home-manager.nixosModules.home-manager
+            disko.nixosModules.disko
+            catppuccin.nixosModules.catppuccin
+            {
+              home-manager = {
+                extraSpecialArgs = {
+                  inherit inputs;
+                  inherit pkgs-unstable;
+                  inherit catppuccin;
+                };
+
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "hm-bak";
+              };
+            }
+          ] ++ extraModules;
+        };
+    in
+    {
       nixosConfigurations = {
         vm = mkSystem [
           ./hosts/vm/configuration.nix
