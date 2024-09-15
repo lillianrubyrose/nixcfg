@@ -6,7 +6,7 @@
     ./lily/direnv.nix
     ./lily/git.nix
     ./lily/term.nix
-    ./lily/sway.nix
+    # ./lily/sway.nix
     ./lily/helix.nix
     catppuccin.homeManagerModules.catppuccin
   ];
@@ -40,6 +40,8 @@
 
     stateVersion = "24.05";
   };
+
+  qt.style.catppuccin.enable = true;
 
   gtk = {
     enable = true;
