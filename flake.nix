@@ -56,6 +56,7 @@
 
               useGlobalPkgs = true;
               useUserPackages = true;
+              backupFileExtension = "hm-bak";
             };
           }
         ] ++ extraModules;
