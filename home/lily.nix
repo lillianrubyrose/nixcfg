@@ -12,8 +12,9 @@
     ./lily/direnv.nix
     ./lily/git.nix
     ./lily/term.nix
-    # ./lily/sway.nix
     ./lily/helix.nix
+    ./lily/plasma.nix
+    ./lily/vscode.nix
     catppuccin.homeManagerModules.catppuccin
   ];
 
@@ -31,14 +32,14 @@
   home = {
     username = "lily";
     homeDirectory = lib.mkDefault "/home/lily";
-    packages =
-      (with pkgs-unstable; [
-        # vesktop until https://github.com/NixOS/nixpkgs/issues/340196 is solved somehow
-      ])
-      ++ (with pkgs; [
-        firefox-devedition-bin
-        vesktop
-      ]);
+    packages = with pkgs; [
+      firefox-devedition-bin
+      vesktop
+
+      # fonts
+      hasklig
+      comic-mono
+    ];
 
     pointerCursor = {
       size = 32;
@@ -50,13 +51,5 @@
   };
 
   qt.style.catppuccin.enable = true;
-
-  gtk = {
-    enable = true;
-    catppuccin = {
-      enable = true;
-      gnomeShellTheme = true;
-      icon.enable = true;
-    };
-  };
+  fonts.fontconfig.enable = true;
 }
