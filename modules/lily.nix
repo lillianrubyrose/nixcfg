@@ -3,6 +3,8 @@
 {
   imports = [ ./ollama.nix ];
 
+  environment.systemPackages = with pkgs; [ zed-editor devenv ];
+
   programs.fish.enable = true;
   users.users.lily = {
     isNormalUser = true;
