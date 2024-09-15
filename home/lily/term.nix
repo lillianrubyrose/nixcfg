@@ -17,19 +17,34 @@
     };
   };
 
-  programs.fastfetch.enable = true;
-  programs.hyfetch = {
+  programs.fastfetch = {
     enable = true;
-
     settings = {
-      preset = "rainbow";
-      mode = "rgb";
-      light_dark = "light";
-      lightness = 0.4;
-      color_align = {
-        mode = "horizontal";
+      display.separator = " ";
+      logo = {
+        source = "~/.config/fastfetch/logo.png";
+        type = "kitty";
       };
-      backend = "fastfetch";
+      modules = [
+        "break"
+        { key = "╭─󰌢"; keyColor = "green"; type = "host"; }
+        { key = "├─󰻠"; keyColor = "green"; type = "cpu"; }
+        { key = "├─󰍛"; keyColor = "green"; type = "gpu"; }
+        { key = "├─"; keyColor = "green"; type = "disk"; }
+        { key = "├─󰑭"; keyColor = "green"; type = "memory"; }
+        { key = "├─󰓡"; keyColor = "green"; type = "swap"; }
+        { key = "╰─󰍹"; keyColor = "green"; type = "display"; }
+        "break"
+        { key = "╭─"; keyColor = "yellow"; type = "shell"; }
+        { key = "├─"; keyColor = "yellow"; type = "terminal"; }
+        { key = "├─"; keyColor = "yellow"; type = "wm"; }
+        { key = "╰─"; keyColor = "yellow"; type = "terminalfont"; }
+        "break"
+        { format = "{user-name}@{host-name}"; key = "╭─"; keyColor = "blue"; type = "title"; }
+        { key = "├─{icon}"; keyColor = "blue"; type = "os"; }
+        { key = "├─"; keyColor = "blue"; type = "kernel"; }
+        { key = "╰─󰅐"; keyColor = "blue"; type = "uptime"; }
+      ];
     };
   };
 
@@ -48,7 +63,7 @@
 
     shellInit = ''
     function fish_greeting
-       hyfetch
+       fastfetch
     end
     '';
 
@@ -63,5 +78,9 @@
   home.file.".config/fish" = {
     source = ./dots/fish;
     recursive = true;
+  };
+
+  home.file.".config/fastfetch/logo.png" = {
+    source = ../../assets/fastfetch-logo.png;
   };
 }
