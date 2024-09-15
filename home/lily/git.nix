@@ -5,7 +5,10 @@
   programs.git = {
     enable = true;
     lfs.enable = true;
-    ignores = [ "*~" "*.swp" ];
+    ignores = [
+      "*~"
+      "*.swp"
+    ];
 
     delta = {
       enable = true;

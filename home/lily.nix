@@ -1,4 +1,10 @@
-{ lib, pkgs, pkgs-unstable, catppuccin, ... }:
+{
+  lib,
+  pkgs,
+  pkgs-unstable,
+  catppuccin,
+  ...
+}:
 
 {
   imports = [
@@ -25,12 +31,14 @@
   home = {
     username = "lily";
     homeDirectory = lib.mkDefault "/home/lily";
-    packages = (with pkgs-unstable; [
-      # vesktop until https://github.com/NixOS/nixpkgs/issues/340196 is solved somehow
-    ]) ++ (with pkgs; [
-      firefox-devedition-bin
-      vesktop
-    ]);
+    packages =
+      (with pkgs-unstable; [
+        # vesktop until https://github.com/NixOS/nixpkgs/issues/340196 is solved somehow
+      ])
+      ++ (with pkgs; [
+        firefox-devedition-bin
+        vesktop
+      ]);
 
     pointerCursor = {
       size = 32;

@@ -13,7 +13,10 @@
               content = {
                 type = "filesystem";
                 format = "vfat";
-                mountOptions = [ "umask=0077" "defaults" ];
+                mountOptions = [
+                  "umask=0077"
+                  "defaults"
+                ];
                 mountpoint = "/boot/efi";
               };
             };
@@ -25,22 +28,25 @@
 
                 subvolumes = {
                   "/@" = {
-                     mountpoint = "/";
+                    mountpoint = "/";
                   };
 
                   "/@home" = {
-                     mountOptions = [ "compress=zstd:1" ];
-                     mountpoint = "/home";
+                    mountOptions = [ "compress=zstd:1" ];
+                    mountpoint = "/home";
                   };
 
                   "/@log" = {
-                     mountOptions = [ "compress=zstd:3" ];
-                     mountpoint = "/var/log";
+                    mountOptions = [ "compress=zstd:3" ];
+                    mountpoint = "/var/log";
                   };
 
                   "/@nix" = {
-                     mountOptions = [ "compress=zstd:1" "noatime" ];
-                     mountpoint = "/nix";
+                    mountOptions = [
+                      "compress=zstd:1"
+                      "noatime"
+                    ];
+                    mountpoint = "/nix";
                   };
                 };
 
@@ -48,11 +54,11 @@
               };
             };
             swap = {
-               size = "100%";
-               content = {
-                  type = "swap";
-                  resumeDevice = true;
-               };
+              size = "100%";
+              content = {
+                type = "swap";
+                resumeDevice = true;
+              };
             };
           };
         };

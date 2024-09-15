@@ -3,7 +3,11 @@
 {
   imports = [ ./ollama.nix ];
 
-  environment.systemPackages = with pkgs; [ zed-editor devenv ];
+  environment.systemPackages = with pkgs; [
+    zed-editor
+    devenv
+    nixfmt-rfc-style
+  ];
 
   programs.fish.enable = true;
   users.users.lily = {
