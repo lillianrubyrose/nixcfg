@@ -3,7 +3,7 @@
 {
   services.pcscd.enable = true;
   # services.dbus.packages = [ pkgs.gcr ];
-  # environment.systemPackages = with pkgs; [ polkit_gnome ];
+  # environment.systemPackages = with pkgs; [ pinentry-qt ];
 
   programs.gnupg.agent = {
     enable = true;

@@ -2,7 +2,6 @@
   description = "NixOS flake for lily :3 memwemmwemwmewemwew";
 
   inputs = {
-    # nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
@@ -35,7 +34,9 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config.allowUnfree = true;
+        config = {
+          allowUnfree = true;
+        };
       };
       pkgs-unstable = import nixpkgs-unstable {
         inherit system;
@@ -89,7 +90,6 @@
         nya = mkSystem [
           ./hosts/nya/configuration.nix
           ./modules/lily.nix
-          # ./modules/sway.nix
           ./modules/plasma.nix
           ./modules/yubikey.nix
           nixos-hardware.nixosModules.common-cpu-amd
