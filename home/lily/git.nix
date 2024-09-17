@@ -4,7 +4,7 @@
   programs.gpg.enable = true;
   programs.git = {
     enable = true;
-    lfs.enable = true;
+#    lfs.enable = true;
     ignores = [
       "*~"
       "*.swp"

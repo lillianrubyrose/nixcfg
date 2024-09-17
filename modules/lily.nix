@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, zed, system, ... }:
 
 {
   imports = [ ./ollama.nix ];
@@ -6,7 +6,8 @@
   services.flatpak.enable = true;
 
   environment.systemPackages = with pkgs; [
-    zed-editor
+    # zed-editor
+    zed.packages.${system}.zed-editor
     devenv
     nixfmt-rfc-style
 
