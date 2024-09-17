@@ -17,6 +17,8 @@
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     catppuccin.url = "github:catppuccin/nix";
+
+    zed.url = "github:zed-industries/zed/v0.153.4-pre";
   };
 
   outputs =
@@ -28,6 +30,7 @@
       home-manager,
       nixos-hardware,
       catppuccin,
+      zed,
       ...
     }@inputs:
     let
@@ -52,6 +55,7 @@
             inherit system;
             inherit pkgs-unstable;
             inherit home-manager;
+            inherit zed;
           };
 
           modules = [
