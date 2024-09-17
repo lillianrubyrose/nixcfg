@@ -37,8 +37,7 @@
       vesktop
 
       # fonts
-      hasklig
-      comic-mono
+      serious-sans
     ];
 
     pointerCursor = {
