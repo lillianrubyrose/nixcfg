@@ -29,7 +29,7 @@
               end = "-4G";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ];
+                extraArgs = ["-f"];
 
                 subvolumes = {
                   "/@" = {
@@ -37,12 +37,12 @@
                   };
 
                   "/@home" = {
-                    mountOptions = [ "compress=zstd:1" ];
+                    mountOptions = ["compress=zstd:1"];
                     mountpoint = "/home";
                   };
 
                   "/@log" = {
-                    mountOptions = [ "compress=zstd:3" ];
+                    mountOptions = ["compress=zstd:3"];
                     mountpoint = "/var/log";
                   };
 

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   services.pcscd.enable = true;
   # services.dbus.packages = [ pkgs.gcr ];
   # environment.systemPackages = with pkgs; [ pinentry-qt ];

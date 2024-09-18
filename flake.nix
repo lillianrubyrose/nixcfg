@@ -21,46 +21,38 @@
     zed.url = "github:zed-industries/zed/v0.153.4-pre";
   };
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      nixpkgs-stable,
-      disko,
-      home-manager,
-      nixos-hardware,
-      catppuccin,
-      zed,
-      ...
-    }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-      };
-      pkgs-stable = import nixpkgs-stable {
-        inherit system;
-        config.allowUnfree = true;
-      };
+  outputs = {
+    self,
+    nixpkgs,
+    nixpkgs-stable,
+    disko,
+    home-manager,
+    nixos-hardware,
+    catppuccin,
+    zed,
+    ...
+  } @ inputs: let
+    system = "x86_64-linux";
 
-      mkSystem =
-        extraModules:
-        nixpkgs.lib.nixosSystem {
+    mkSystem = extraModules:
+      nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs;
           inherit system;
-          specialArgs = {
-            inherit inputs;
-            inherit system;
-            inherit home-manager;
-            inherit zed;
-          };
+          inherit home-manager;
+          inherit zed;
+        };
 
-          modules = [
+        modules =
+          [
             ./modules/common.nix
             home-manager.nixosModules.home-manager
             disko.nixosModules.disko
             catppuccin.nixosModules.catppuccin
             {
+              nixpkgs.config.allowUnfree = true;
+
               home-manager = {
                 extraSpecialArgs = {
                   inherit inputs;
@@ -72,43 +64,43 @@
                 backupFileExtension = "hm-bak";
               };
             }
-          ] ++ extraModules;
-        };
-    in
-    {
-      nixosConfigurations = {
-        vm = mkSystem [
-          ./hosts/vm/configuration.nix
-          ./modules/lily.nix
-          ./modules/plasma.nix
-          {
-            home-manager.users.lily = import ./home/lily.nix;
-          }
-        ];
+          ]
+          ++ extraModules;
+      };
+  in {
+    nixosConfigurations = {
+      vm = mkSystem [
+        ./hosts/vm/configuration.nix
+        ./modules/lily.nix
+        ./modules/plasma.nix
+        {
+          home-manager.users.lily = import ./home/lily.nix;
+        }
+      ];
 
-        # desktop
-        nya = mkSystem [
-          ./hosts/nya/configuration.nix
-          ./modules/lily.nix
-          ./modules/plasma.nix
-          ./modules/yubikey.nix
-          nixos-hardware.nixosModules.common-cpu-amd
-          nixos-hardware.nixosModules.common-gpu-amd
-          {
-            home-manager.users.lily = import ./home/lily.nix;
-          }
-        ];
+      # desktop
+      nya = mkSystem [
+        ./hosts/nya/configuration.nix
+        ./modules/lily.nix
+        ./modules/plasma.nix
+        ./modules/yubikey.nix
+        nixos-hardware.nixosModules.common-cpu-amd
+        nixos-hardware.nixosModules.common-gpu-amd
+        {
+          home-manager.users.lily = import ./home/lily.nix;
+        }
+      ];
 
-        # pufferfish.host 2C 8GB 5950x vps.
-        # runs NixOS stable.
-        # the VirtFusion panel doesn't have NixOS for an option so NixOS has to be installed manually with kexec images.
-        wu-vps = nixpkgs-stable.lib.nixosSystem {
-          system = "x86_64-linux";
-          modules = [
-            disko.nixosModules.disko
-            ./hosts/wu-vps/configuration.nix
-          ];
-        };
+      # pufferfish.host 2C 8GB 5950x vps.
+      # runs NixOS stable.
+      # the VirtFusion panel doesn't have NixOS for an option so NixOS has to be installed manually with kexec images.
+      wu-vps = nixpkgs-stable.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          disko.nixosModules.disko
+          ./hosts/wu-vps/configuration.nix
+        ];
       };
     };
+  };
 }

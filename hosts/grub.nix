@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   boot.loader.grub = {
     enable = true;
     copyKernels = true;
@@ -9,7 +7,7 @@
     splashImage = ./grub-splash.jpg;
     splashMode = "stretch";
 
-    devices = [ "nodev" ];
+    devices = ["nodev"];
     extraEntries = ''
       menuentry "Reboot" {
         reboot
