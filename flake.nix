@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/release-24.05";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,7 +25,7 @@
     {
       self,
       nixpkgs,
-      nixpkgs-unstable,
+      nixpkgs-stable,
       disko,
       home-manager,
       nixos-hardware,
@@ -37,11 +37,9 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs {
         inherit system;
-        config = {
-          allowUnfree = true;
-        };
+        config.allowUnfree = true;
       };
-      pkgs-unstable = import nixpkgs-unstable {
+      pkgs-stable = import nixpkgs-stable {
         inherit system;
         config.allowUnfree = true;
       };
@@ -53,7 +51,6 @@
           specialArgs = {
             inherit inputs;
             inherit system;
-            inherit pkgs-unstable;
             inherit home-manager;
             inherit zed;
           };
@@ -67,7 +64,6 @@
               home-manager = {
                 extraSpecialArgs = {
                   inherit inputs;
-                  inherit pkgs-unstable;
                   inherit catppuccin;
                 };
 
@@ -102,6 +98,17 @@
             home-manager.users.lily = import ./home/lily.nix;
           }
         ];
+
+        # pufferfish.host 2C 8GB 5950x vps.
+        # runs NixOS stable.
+        # the VirtFusion panel doesn't have NixOS for an option so NixOS has to be installed manually with kexec images.
+        wu-vps = nixpkgs-stable.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            disko.nixosModules.disko
+            ./hosts/wu-vps/configuration.nix
+          ];
+        };
       };
     };
 }

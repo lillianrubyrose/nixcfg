@@ -1,7 +1,6 @@
 {
   lib,
   pkgs,
-  pkgs-unstable,
   ...
 }:
 
@@ -17,13 +16,10 @@
   networking.networkmanager.enable = true;
 
   environment = {
-    systemPackages =
-      (with pkgs-unstable; [
-        helix # terminal editor of choice
-      ])
-      ++ (with pkgs; [
+    systemPackages = with pkgs; [
+        helix # terminal editor of choise 
         wget
-      ]);
+      ];
 
     sessionVariables = {
       EDITOR = "hx";
