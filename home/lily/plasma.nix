@@ -1,6 +1,8 @@
-{ pkgs, catppuccin, ... }:
-
 {
+  pkgs,
+  catppuccin,
+  ...
+}: {
   nixpkgs.config.packageOverrides = pkgs: {
     # catppuccin-kde = pkgs.catppuccin-kde.override { accents = [ catppuccin.accent ]; flavour = [ "mocha" "latte" ]; };
     # catppuccin-sddm-corners = pkgs.catppuccin-sddm-corners.override { flavor = "latte"; }; # just always use latte for sddm

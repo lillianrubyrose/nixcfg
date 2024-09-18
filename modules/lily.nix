@@ -1,7 +1,10 @@
-{ pkgs, zed, system, ... }:
-
 {
-  imports = [ ./ollama.nix ];
+  pkgs,
+  zed,
+  system,
+  ...
+}: {
+  imports = [./ollama.nix];
 
   services.flatpak.enable = true;
 
@@ -9,17 +12,17 @@
     # zed-editor
     zed.packages.${system}.zed-editor
     devenv
-    nixfmt-rfc-style
+    alejandra
 
     (catppuccin-kde.override {
-      accents = [ "lavender" ];
+      accents = ["lavender"];
       flavour = [
         "mocha"
         "latte"
       ];
     })
-    (catppuccin-sddm.override { flavor = "latte"; }) # just always use latte for sddm
-    (btop.override { rocmSupport = true; })
+    (catppuccin-sddm.override {flavor = "latte";}) # just always use latte for sddm
+    (btop.override {rocmSupport = true;})
   ];
 
   programs.fish.enable = true;

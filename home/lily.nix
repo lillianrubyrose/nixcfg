@@ -4,9 +4,7 @@
   pkgs-unstable,
   catppuccin,
   ...
-}:
-
-{
+}: {
   imports = [
     ./lily/nix-index.nix
     ./lily/direnv.nix

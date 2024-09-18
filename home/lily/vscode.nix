@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
@@ -46,6 +44,12 @@
       rust-analyzer = {
         check.command = "clippy";
         inlayHints.closureStyle = "rust_analyzer";
+      };
+
+      nix = {
+        formatterPath = "alejandra";
+        enableLanguageServer = true;
+        serverPath = "nil";
       };
     };
   };

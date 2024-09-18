@@ -2,9 +2,7 @@
   lib,
   pkgs,
   ...
-}:
-
-{
+}: {
   imports = [
     ./common/nix.nix
     ./common/i18n.nix
@@ -17,9 +15,9 @@
 
   environment = {
     systemPackages = with pkgs; [
-        helix # terminal editor of choise 
-        wget
-      ];
+      helix # terminal editor of choise
+      wget
+    ];
 
     sessionVariables = {
       EDITOR = "hx";
