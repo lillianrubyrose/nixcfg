@@ -32,98 +32,34 @@
     zed,
     ...
   } @ inputs: let
-    system = "x86_64-linux";
-
-    mkSystemOld = extraModules:
-      nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          inherit inputs;
-          inherit system;
-          inherit home-manager;
-          inherit zed;
-        };
-
-        modules =
-          [
-            ./old/modules/common.nix
-            home-manager.nixosModules.home-manager
-            disko.nixosModules.disko
-            catppuccin.nixosModules.catppuccin
-            {
-              nixpkgs.config.allowUnfree = true;
-
-              home-manager = {
-                extraSpecialArgs = {
-                  inherit inputs;
-                  inherit catppuccin;
-                };
-
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "hm-bak";
-              };
-            }
-          ]
-          ++ extraModules;
-      };
-
-    mkSystem = system: pkgs: extraModules:
+    mkSystem = hostname: system: pkgs:
       pkgs.lib.nixosSystem {
         inherit system;
 
         specialArgs = {
-          inherit inputs home-manager zed nixpkgs-stable system;
+          inherit inputs home-manager zed nixpkgs-stable system catppuccin nixos-hardware hostname;
         };
 
-        modules =
-          extraModules
-          ++ [
-            home-manager.nixosModules.home-manager
-            disko.nixosModules.disko
-            catppuccin.nixosModules.catppuccin
-          ];
+        modules = [
+          ./systems/${hostname}/configuration.nix
+          home-manager.nixosModules.home-manager
+          disko.nixosModules.disko
+          catppuccin.nixosModules.catppuccin
+        ];
       };
   in {
     nixosModules = import ./modules {lib = nixpkgs.lib;};
 
     nixosConfigurations = {
       # desktop
-      nya = mkSystem "x86_64-linux" nixpkgs [
-        ./systems/nya/configuration.nix
-      ];
+      nya = mkSystem "nya" "x86_64-linux" nixpkgs;
 
-      # vm = mkSystemOld [
-      #   ./old/hosts/vm/configuration.nix
-      #   ./old/modules/lily.nix
-      #   ./old/modules/plasma.nix
-      #   {
-      #     home-manager.users.lily = import ./old/home/lily.nix;
-      #   }
-      # ];
-
-      # nya = mkSystemOld [
-      #   ./old/hosts/nya/configuration.nix
-      #   ./old/modules/lily.nix
-      #   ./old/modules/plasma.nix
-      #   ./old/modules/yubikey.nix
-      #   nixos-hardware.nixosModules.common-cpu-amd
-      #   nixos-hardware.nixosModules.common-gpu-amd
-      #   {
-      #     home-manager.users.lily = import ./old/home/lily.nix;
-      #   }
-      # ];
+      vm = mkSystem "vm" "x86_64-linux" nixpkgs;
 
       # pufferfish.host 2C 8GB 5950x vps.
       # runs NixOS stable.
       # the VirtFusion panel doesn't have NixOS for an option so NixOS has to be installed manually with kexec images.
-      # wu-vps = nixpkgs-stable.lib.nixosSystem {
-      #   system = "x86_64-linux";
-      #   modules = [
-      #     disko.nixosModules.disko
-      #     ./old/hosts/wu-vps/configuration.nix
-      #   ];
-      # };
+      wu-vps = mkSystem "wu-vps" "x86_64-linux" nixpkgs-stable;
     };
   };
 }
