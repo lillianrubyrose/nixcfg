@@ -67,40 +67,64 @@
           ]
           ++ extraModules;
       };
+
+    mkSystem = system: pkgs: extraModules:
+      pkgs.lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+          inherit inputs;
+          inherit (self) nixosModules;
+          inherit home-manager;
+          inherit zed;
+        };
+
+        modules = [
+          home-manager.nixosModules.home-manager
+          disko.nixosModules.disko
+          catppuccin.nixosModules.catppuccin
+        ] ++ extraModules;
+      };
   in {
+    nixosModules = import ./modules {lib = nixpkgs.lib;};
+
     nixosConfigurations = {
-      vm = mkSystemOld [
-        ./old/hosts/vm/configuration.nix
-        ./old/modules/lily.nix
-        ./old/modules/plasma.nix
-        {
-          home-manager.users.lily = import ./old/home/lily.nix;
-        }
+      # desktop
+      nya = mkSystem "x86_64-linux" nixpkgs [
+        ./systems/nya/configuration.nix
       ];
 
-      # desktop
-      nya = mkSystemOld [
-        ./old/hosts/nya/configuration.nix
-        ./old/modules/lily.nix
-        ./old/modules/plasma.nix
-        ./old/modules/yubikey.nix
-        nixos-hardware.nixosModules.common-cpu-amd
-        nixos-hardware.nixosModules.common-gpu-amd
-        {
-          home-manager.users.lily = import ./old/home/lily.nix;
-        }
-      ];
+      # vm = mkSystemOld [
+      #   ./old/hosts/vm/configuration.nix
+      #   ./old/modules/lily.nix
+      #   ./old/modules/plasma.nix
+      #   {
+      #     home-manager.users.lily = import ./old/home/lily.nix;
+      #   }
+      # ];
+
+      # nya = mkSystemOld [
+      #   ./old/hosts/nya/configuration.nix
+      #   ./old/modules/lily.nix
+      #   ./old/modules/plasma.nix
+      #   ./old/modules/yubikey.nix
+      #   nixos-hardware.nixosModules.common-cpu-amd
+      #   nixos-hardware.nixosModules.common-gpu-amd
+      #   {
+      #     home-manager.users.lily = import ./old/home/lily.nix;
+      #   }
+      # ];
 
       # pufferfish.host 2C 8GB 5950x vps.
       # runs NixOS stable.
       # the VirtFusion panel doesn't have NixOS for an option so NixOS has to be installed manually with kexec images.
-      wu-vps = nixpkgs-stable.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          disko.nixosModules.disko
-          ./old/hosts/wu-vps/configuration.nix
-        ];
-      };
+      # wu-vps = nixpkgs-stable.lib.nixosSystem {
+      #   system = "x86_64-linux";
+      #   modules = [
+      #     disko.nixosModules.disko
+      #     ./old/hosts/wu-vps/configuration.nix
+      #   ];
+      # };
     };
   };
 }
