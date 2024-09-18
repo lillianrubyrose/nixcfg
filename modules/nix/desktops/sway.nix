@@ -10,7 +10,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    waybar # bar
     nautilus # file manager
 
     grimblast # screenshots
@@ -18,8 +17,7 @@
     # misc
     xdg-utils
     wl-clipboard
-
-    dconf
+    pamixer
   ];
 
   xdg.portal = {
@@ -34,4 +32,6 @@
       ];
     };
   };
+
+  programs.gnupg.agent.pinentryPackage = pkgs.pinentry-qt;
 }

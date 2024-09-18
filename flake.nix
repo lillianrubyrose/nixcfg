@@ -73,17 +73,16 @@
         inherit system;
 
         specialArgs = {
-          inherit inputs;
-          inherit (self) nixosModules;
-          inherit home-manager;
-          inherit zed;
+          inherit inputs home-manager zed nixpkgs-stable system;
         };
 
-        modules = [
-          home-manager.nixosModules.home-manager
-          disko.nixosModules.disko
-          catppuccin.nixosModules.catppuccin
-        ] ++ extraModules;
+        modules =
+          extraModules
+          ++ [
+            home-manager.nixosModules.home-manager
+            disko.nixosModules.disko
+            catppuccin.nixosModules.catppuccin
+          ];
       };
   in {
     nixosModules = import ./modules {lib = nixpkgs.lib;};
