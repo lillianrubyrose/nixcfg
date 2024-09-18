@@ -34,7 +34,7 @@
   } @ inputs: let
     system = "x86_64-linux";
 
-    mkSystem = extraModules:
+    mkSystemOld = extraModules:
       nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
@@ -46,7 +46,7 @@
 
         modules =
           [
-            ./modules/common.nix
+            ./old/modules/common.nix
             home-manager.nixosModules.home-manager
             disko.nixosModules.disko
             catppuccin.nixosModules.catppuccin
@@ -69,25 +69,25 @@
       };
   in {
     nixosConfigurations = {
-      vm = mkSystem [
-        ./hosts/vm/configuration.nix
-        ./modules/lily.nix
-        ./modules/plasma.nix
+      vm = mkSystemOld [
+        ./old/hosts/vm/configuration.nix
+        ./old/modules/lily.nix
+        ./old/modules/plasma.nix
         {
-          home-manager.users.lily = import ./home/lily.nix;
+          home-manager.users.lily = import ./old/home/lily.nix;
         }
       ];
 
       # desktop
-      nya = mkSystem [
-        ./hosts/nya/configuration.nix
-        ./modules/lily.nix
-        ./modules/plasma.nix
-        ./modules/yubikey.nix
+      nya = mkSystemOld [
+        ./old/hosts/nya/configuration.nix
+        ./old/modules/lily.nix
+        ./old/modules/plasma.nix
+        ./old/modules/yubikey.nix
         nixos-hardware.nixosModules.common-cpu-amd
         nixos-hardware.nixosModules.common-gpu-amd
         {
-          home-manager.users.lily = import ./home/lily.nix;
+          home-manager.users.lily = import ./old/home/lily.nix;
         }
       ];
 
@@ -98,7 +98,7 @@
         system = "x86_64-linux";
         modules = [
           disko.nixosModules.disko
-          ./hosts/wu-vps/configuration.nix
+          ./old/hosts/wu-vps/configuration.nix
         ];
       };
     };
