@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  nixos-hardware,
   ...
 }: {
   system.stateVersion = "24.05"; # change this when reinstalling the system
@@ -23,8 +24,14 @@
     nix.ollama
     nix.flatpak
 
+    home-manager.common-settings
+    home-manager.lily.user
+
     ./hardware-configuration.nix
     ./disko-config.nix
+
+    nixos-hardware.nixosModules.common-cpu-amd
+    nixos-hardware.nixosModules.common-gpu-amd
   ];
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
