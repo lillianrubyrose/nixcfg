@@ -5,6 +5,9 @@ _: {
       catppuccin.enable = true;
 
       settings = {
+        font_family = "Victor Mono";
+        font_size = 14;
+
         tab_bar_edge = "bottom";
         tab_bar_style = "powerline";
         tab_powerline_style = "slanted";

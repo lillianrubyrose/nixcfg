@@ -29,7 +29,7 @@
     userSettings = {
       editor = {
         fontSize = 16;
-        fontFamily = "'Hasklig', 'monospace', monospace";
+        fontFamily = "'Victor Mono', 'monospace', monospace";
         inlayHints.enabled = "offUnlessPressed";
         minimap.enabled = false;
       };

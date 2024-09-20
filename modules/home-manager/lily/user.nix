@@ -43,6 +43,7 @@
 
         # fonts
         victor-mono # programming
+        ubuntu-sans # for system use (kde, waybar, etc)
         ubuntu-sans-mono # for system use (kde, waybar, etc)
       ];
 
