@@ -42,7 +42,8 @@
         vesktop
 
         # fonts
-        serious-sans
+        victor-mono # programming
+        ubuntu-sans-mono # for system use (kde, waybar, etc)
       ];
 
       pointerCursor = {

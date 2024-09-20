@@ -5,7 +5,6 @@
   ...
 }: {
   system.stateVersion = "24.05"; # change this when reinstalling the system
-  networking.hostName = "nya";
 
   imports = with inputs.self.nixosModules; [
     nix.non-free
@@ -43,9 +42,13 @@
   ];
 
   services.openssh.enable = true;
-  networking.firewall.allowedTCPPorts = [
-    22
-    25565
-  ];
-  networking.networkmanager.enable = true;
+
+  networking = {
+    hostName = "nya";
+    firewall.allowedTCPPorts = [
+      22
+      25565
+    ];
+    networkmanager.enable = true;
+  };
 }

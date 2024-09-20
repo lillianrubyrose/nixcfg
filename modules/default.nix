@@ -34,8 +34,8 @@
 
     folderPaths = map (name: "${(toString folder)}/${name}") folderNames;
     folderNamesToPaths = builtins.listToAttrs (lib.zipListsWith (folder: path: lib.nameValuePair folder path) folderNames folderPaths);
-    modules = builtins.mapAttrs (name: path: getModulesInDir path) folderNamesToPaths;
-    restModules = builtins.mapAttrs (name: path: getSubDirModulesRecursive path) folderNamesToPaths;
+    modules = builtins.mapAttrs (name: getModulesInDir) folderNamesToPaths;
+    restModules = builtins.mapAttrs (name: getSubDirModulesRecursive) folderNamesToPaths;
   in
     lib.attrsets.recursiveUpdate modules restModules;
 in

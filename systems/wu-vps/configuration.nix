@@ -28,8 +28,13 @@
     services.sudo.sshAgentAuth = true;
   };
 
-  networking.hostName = "wu-vps";
-  networking.useDHCP = true;
+  networking = {
+    hostName = "wu-vps";
+    useDHCP = true;
+    firewall.allowedTCPPorts = [
+      22
+    ]; # 22 is for git
+  };
 
   environment.systemPackages = with pkgs; [
     curl
@@ -57,11 +62,6 @@
     font = "Lat2-Terminus16";
     keyMap = "us";
   };
-
-  networking.firewall.allowedTCPPorts = [
-    22
-  ]; # 22 is for git
-  networking.firewall.allowedUDPPorts = [];
 
   system.stateVersion = "24.05"; # dont change unless reinstalling with new version
 }

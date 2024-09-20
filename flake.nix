@@ -32,10 +32,6 @@
     zed,
     ...
   } @ inputs: let
-    supportedSystems = [
-      "x86_64-linux"
-    ];
-
     mkSystem = hostname: system: pkgs:
       pkgs.lib.nixosSystem {
         inherit system;
@@ -52,11 +48,27 @@
         ];
       };
 
-    allSupportedSystems = nixpkgs.lib.genAttrs supportedSystems;
+    forAllSystems = fn:
+      nixpkgs.lib.genAttrs ["x86_64-linux"] (system:
+        fn (import nixpkgs {
+          inherit system;
+        }));
   in {
-    formatter = allSupportedSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+    formatter = forAllSystems (pkgs: pkgs.alejandra);
 
-    nixosModules = import ./modules {lib = nixpkgs.lib;};
+    devShells = forAllSystems (pkgs: {
+      default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [
+          statix # linter
+          deadnix # finds dead code i guess
+          alejandra # formatter
+          nil # lsp
+          nvd # for nix diffs
+        ];
+      };
+    });
+
+    nixosModules = import ./modules {inherit (nixpkgs) lib;};
 
     nixosConfigurations = {
       # desktop
