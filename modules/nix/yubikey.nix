@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+_: {
   services.pcscd.enable = true;
 
   programs.gnupg.agent = {

@@ -6,7 +6,7 @@
 }: let
   zed-fhs = pkgs.buildFHSUserEnv {
     name = "zed";
-    targetPkgs = pkgs: [zed.packages.${system}.zed-editor];
+    targetPkgs = _pkgs: [zed.packages.${system}.zed-editor];
     runScript = "zed";
     meta.mainProgram = "zed";
   };
