@@ -17,10 +17,7 @@
     },
     "crane": {
       "inputs": {
-        "nixpkgs": [
-          "zed",
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
         "lastModified": 1724537630,
@@ -183,6 +180,22 @@
     },
     "nixpkgs_2": {
       "locked": {
+        "lastModified": 1726583932,
+        "narHash": "sha256-zACxiQx8knB3F8+Ze+1BpiYrI+CbhxyWpcSID9kVhkQ=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "658e7223191d2598641d50ee4e898126768fe847",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
+      "locked": {
         "lastModified": 1724479785,
         "narHash": "sha256-pP3Azj5d6M5nmG68Fu4JqZmdGt4S4vqI5f8te+E/FTw=",
         "owner": "NixOS",
@@ -231,19 +244,19 @@
         "crane": "crane",
         "fenix": "fenix",
         "flake-compat": "flake-compat",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1726527844,
-        "narHash": "sha256-pgj+9cM7dIs/kf5qmPmjxNtYxC0Z0TFaaQUB9atJU8Q=",
+        "lastModified": 1726758150,
+        "narHash": "sha256-9n0h/z8Mf5T4M6BGV61Codsosq22g592PqeRTcw39+Q=",
         "owner": "zed-industries",
         "repo": "zed",
-        "rev": "47779a933445a929f5ac963f083f278c6179bfb5",
+        "rev": "a0a1b1c69b966ee0f2b72d45b83d000c68d6ab41",
         "type": "github"
       },
       "original": {
         "owner": "zed-industries",
-        "ref": "v0.153.4-pre",
+        "ref": "v0.154.0-pre",
         "repo": "zed",
         "type": "github"
       }

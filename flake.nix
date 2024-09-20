@@ -18,7 +18,7 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    zed.url = "github:zed-industries/zed/v0.153.4-pre";
+    zed.url = "github:zed-industries/zed/v0.154.0-pre";
   };
 
   outputs = {
@@ -32,6 +32,10 @@
     zed,
     ...
   } @ inputs: let
+    supportedSystems = [
+      "x86_64-linux"
+    ];
+
     mkSystem = hostname: system: pkgs:
       pkgs.lib.nixosSystem {
         inherit system;
@@ -47,7 +51,11 @@
           catppuccin.nixosModules.catppuccin
         ];
       };
+
+    allSupportedSystems = nixpkgs.lib.genAttrs supportedSystems;
   in {
+    formatter = allSupportedSystems (system: nixpkgs.legacyPackages.${system}.alejandra);
+
     nixosModules = import ./modules {lib = nixpkgs.lib;};
 
     nixosConfigurations = {
