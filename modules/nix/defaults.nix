@@ -1,3 +1,4 @@
+# These are what I believe to be sane defaults so these are not feature gated.
 {pkgs, ...}: {
   nix = {
     settings = {
@@ -22,12 +23,7 @@
   programs.git.enable = true;
   environment = {
     systemPackages = with pkgs; [
-      helix # terminal editor of choice
       wget
     ];
-
-    sessionVariables = {
-      EDITOR = "hx";
-    };
   };
 }

@@ -11,9 +11,6 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-index-database.url = "github:nix-community/nix-index-database";
-    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
     catppuccin.url = "github:catppuccin/nix";
@@ -40,6 +37,7 @@
         };
 
         modules = [
+          ./modules
           ./systems/${hostname}/configuration.nix
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
@@ -67,8 +65,6 @@
         ];
       };
     });
-
-    nixosModules = import ./modules {inherit (nixpkgs) lib;};
 
     nixosConfigurations = {
       # desktop
