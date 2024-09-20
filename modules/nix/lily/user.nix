@@ -7,6 +7,7 @@
       "input"
       "video"
       "networkmanager"
+      "libvirtd"
     ];
     shell = pkgs.fish;
   };

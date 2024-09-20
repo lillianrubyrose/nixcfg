@@ -62,6 +62,7 @@
           deadnix # finds dead code i guess
           alejandra # formatter
           nil # lsp
+          nixd # lsp used in zed nix plugin. why?qwq
           nvd # for nix diffs
         ];
       };

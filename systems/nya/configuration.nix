@@ -22,9 +22,11 @@
     nix.pipewire
     nix.ollama
     nix.flatpak
+    nix.libvirtd
 
     home-manager.common-settings
     home-manager.lily.user
+    home-manager.lily.virt-manager-qemu
 
     ./hardware-configuration.nix
     ./disko-config.nix

@@ -27,6 +27,11 @@
 
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
-  services.openssh.enable = true;
+  services = {
+    qemuGuest.enable = true;
+    spice-vdagentd.enable = true; # enable copy and paste between host and guest
+    openssh.enable = true;
+  };
+
   networking.firewall.allowedTCPPorts = [22];
 }
