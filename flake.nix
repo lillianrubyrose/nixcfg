@@ -70,7 +70,8 @@
       # desktop
       nya = mkSystem "nya" "x86_64-linux" nixpkgs;
 
-      vm = mkSystem "vm" "x86_64-linux" nixpkgs;
+      desktop-vm = mkSystem "desktop-vm" "x86_64-linux" nixpkgs;
+      server-vm = mkSystem "server-vm" "x86_64-linux" nixpkgs;
 
       # pufferfish.host 2C 8GB 5950x vps.
       # runs NixOS stable.
