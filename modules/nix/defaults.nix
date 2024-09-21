@@ -24,6 +24,8 @@
   environment = {
     systemPackages = with pkgs; [
       wget
+      rage
+      age-plugin-yubikey
     ];
   };
 }

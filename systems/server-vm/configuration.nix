@@ -15,7 +15,7 @@
     openssh.enable = true;
   };
 
-  networking.firewall.allowedTCPPorts = [ 22 80 443 3000 8080 ];
+  networking.firewall.allowedTCPPorts = [22 80 443 3000 8080];
 
   queernix = {
     pipewire.enable = true;
@@ -24,10 +24,9 @@
       enable = true;
     };
     grub.uefi.enable = true;
-    forgejo.enable = true;
   };
 
-  environment.systemPackages = [ pkgs.p7zip ];
+  environment.systemPackages = [pkgs.p7zip];
 
   users.users.root.initialPassword = "vm";
   users.users.lily.initialPassword = "vm";
@@ -39,11 +38,12 @@
       memorySize = 8192;
       cores = 16;
       forwardPorts = [
-        { from = "host"; host.port = 3000; guest.port = 3000; }
+        {
+          from = "host";
+          host.port = 3000;
+          guest.port = 3000;
+        }
       ];
-      sharedDirectories = {
-        existing-data = { source = "/home/lily/vm-shared"; target = "/mnt/data"; };
-      };
     };
   };
 }
