@@ -4,26 +4,6 @@
   ...
 }: {
   imports = [
-    # nix.non-free
-    # nix.common-settings
-    # nix.grub.theme
-    # nix.grub.uefi
-
-    # nix.lily.user
-    # nix.lily.i18n
-    # nix.lily.dev-common
-
-    # nix.desktops.plasma6.desktop
-    # nix.desktops.plasma6.catppuccin
-    # nix.yubikey
-    # nix.pipewire
-    # nix.ollama
-    # nix.flatpak
-    # nix.libvirtd
-
-    # home-manager.common-settings
-    # home-manager.lily.user
-    # home-manager.lily.virt-manager-qemu
     ./hardware-configuration.nix
     ./disko-config.nix
 
@@ -52,10 +32,10 @@
   queernix = {
     yubikey.enable = true;
     pipewire.enable = true;
-    ollama = {
-      enable = true;
-      rocm = true;
-    };
+    # ollama = {
+    #   enable = true;
+    #   rocm = true;
+    # };
     virtualisation.libvirtd.enable = true;
     flatpak.enable = true;
     terminal-editor.helix.enable = true;

@@ -15,7 +15,7 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    zed.url = "github:zed-industries/zed/v0.154.0-pre";
+    zed.url = "github:zed-industries/zed/main";
   };
 
   outputs = {
