@@ -48,6 +48,7 @@
         stateVersion = "24.05";
       };
 
+      programs.ncspot.enable = true;
       qt.style.catppuccin.enable = true;
       fonts.fontconfig.enable = true;
     };
