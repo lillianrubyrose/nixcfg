@@ -17,6 +17,7 @@
 
   environment.systemPackages = with pkgs; [
     (btop.override {rocmSupport = true;})
+    alsa-scarlett-gui
   ];
 
   services.openssh.enable = true;
@@ -27,6 +28,13 @@
       25565
     ];
     networkmanager.enable = true;
+  };
+
+  services.pipewire.extraConfig.pipewire."92-sample-rate" = {
+    "context.properties" = {
+      "default.clock.allowed-rates" = [ 48000 96000 192000 ];
+      "default.clock.rate" = 192000;
+    };
   };
 
   queernix = {
