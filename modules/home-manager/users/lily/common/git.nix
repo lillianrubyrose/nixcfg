@@ -20,7 +20,7 @@
       userName = "Lillian Rose";
       userEmail = "me@lillianro.se";
       extraConfig = {
-        user.signingKey = "985A88CE54A3CB82";
+        user.signingKey = "0x9AB58AD0C3A998A5";
         commit.gpgsign = true;
         tag.gpgsign = true;
 

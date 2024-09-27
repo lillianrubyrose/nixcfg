@@ -48,6 +48,14 @@
         stateVersion = "24.05";
       };
 
+      services.gpg-agent = {
+        enable = true;
+        enableFishIntegration = true;
+        enableSshSupport = true;
+        enableScDaemon = true;
+        sshKeys = [ "5D8B8D8A957EDA5C4784CDE7525C508B506BF655" ];
+      };
+
       qt.style.catppuccin.enable = true;
       fonts.fontconfig.enable = true;
     };
