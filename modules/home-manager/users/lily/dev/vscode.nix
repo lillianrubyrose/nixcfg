@@ -26,10 +26,15 @@
         # nix
         jnoortheen.nix-ide
 
+        # astro
+        astro-build.astro-vscode
+        unifiedjs.vscode-mdx
+
         # misc
         mkhl.direnv
         eamodio.gitlens
         continue.continue
+        bradlc.vscode-tailwindcss
       ];
 
       userSettings = {
