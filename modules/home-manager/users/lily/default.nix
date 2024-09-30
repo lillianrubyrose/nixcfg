@@ -58,6 +58,11 @@
 
       qt.style.catppuccin.enable = true;
       fonts.fontconfig.enable = true;
+
+      # TODO: Make apart of pipewire setting
+      services.easyeffects = {
+        enable = true;
+      };
     };
   };
 }
