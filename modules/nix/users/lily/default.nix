@@ -25,6 +25,10 @@
       ];
     };
 
+    environment.systemPackages = with pkgs; [
+      signal-desktop
+    ];
+
     nix.settings.trusted-users = ["lily"];
 
     time.timeZone = "America/New_York";

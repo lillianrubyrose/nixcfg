@@ -207,16 +207,16 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1728349476,
-        "narHash": "sha256-aZIvvjEk3piIWD4gfeSiIOvJHmkUHPeUdXRWZ7oyoW0=",
+        "lastModified": 1727881419,
+        "narHash": "sha256-CH1QQjT3e8OVYXGBA0aymkvnBbXhErKJ6cMQIgdchGo=",
         "owner": "zed-industries",
         "repo": "zed",
-        "rev": "87cc208f9f08ddd3c799135d74be76bdf4c8a8c1",
+        "rev": "8ee952076ae507095005d5c1913ce81c25c40489",
         "type": "github"
       },
       "original": {
         "owner": "zed-industries",
-        "ref": "main",
+        "ref": "v0.156.0-pre",
         "repo": "zed",
         "type": "github"
       }
