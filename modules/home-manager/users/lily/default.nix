@@ -16,8 +16,8 @@
       ];
 
       catppuccin = {
-        flavor = "latte";
-        # flavor = "mocha";
+        # flavor = "latte";
+        flavor = "mocha";
         accent = "lavender";
 
         pointerCursor = {
@@ -53,7 +53,7 @@
         enableFishIntegration = true;
         enableSshSupport = true;
         enableScDaemon = true;
-        sshKeys = [ "5D8B8D8A957EDA5C4784CDE7525C508B506BF655" ];
+        sshKeys = ["5D8B8D8A957EDA5C4784CDE7525C508B506BF655"];
       };
 
       qt.style.catppuccin.enable = true;

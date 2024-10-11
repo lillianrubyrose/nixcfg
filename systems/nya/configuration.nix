@@ -19,7 +19,6 @@
     (btop.override {rocmSupport = true;})
     alsa-scarlett-gui
   ];
-
   services.openssh.enable = true;
   networking = {
     hostName = "nya";
@@ -51,6 +50,7 @@
     users.lily = {
       enable = true;
       dev.enable = true;
+      gaming.enable = true;
     };
     grub.uefi.enable = true;
   };
