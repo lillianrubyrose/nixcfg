@@ -29,7 +29,7 @@
       victor-mono
       ubuntu-sans
       ubuntu-sans-mono
-      (nerdfonts.override { fonts = [ "VictorMono" ]; })
+      (nerdfonts.override {fonts = ["VictorMono"];})
     ];
 
     environment.systemPackages = with pkgs; [

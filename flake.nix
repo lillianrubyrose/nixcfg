@@ -16,6 +16,9 @@
     catppuccin.url = "github:catppuccin/nix";
 
     zed.url = "github:zed-industries/zed/v0.156.0-pre";
+
+    darwin.url = "github:lnl7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -26,6 +29,7 @@
     nixos-hardware,
     catppuccin,
     zed,
+    darwin,
     ...
   } @ inputs: let
     mkSystem = hostname: system: pkgs:
@@ -77,6 +81,17 @@
       # runs NixOS stable.
       # the VirtFusion panel doesn't have NixOS for an option so NixOS has to be installed manually with kexec images.
       wu-vps = mkSystem "wu-vps" "x86_64-linux" nixpkgs-stable;
+    };
+
+    darwinConfigurations = {
+      akita = darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        modules = [
+          ./modules
+          ./systems/akita/configuration.nix
+          home-manager.darwinModules.home-manager
+        ];
+      };
     };
   };
 }
