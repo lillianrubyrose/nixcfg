@@ -22,10 +22,11 @@
   services.openssh.enable = true;
   networking = {
     hostName = "nya";
-    firewall.allowedTCPPorts = [
-      22
-      25565
-    ];
+    firewall.enable = false;
+    # firewall.allowedTCPPorts = [
+    #   22
+    #   25565
+    # ];
     networkmanager.enable = true;
   };
 

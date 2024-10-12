@@ -16,8 +16,8 @@
       ];
 
       catppuccin = {
-        # flavor = "latte";
-        flavor = "mocha";
+        flavor = "latte";
+        # flavor = "mocha";
         accent = "lavender";
 
         pointerCursor = {
@@ -32,11 +32,6 @@
         packages = with pkgs; [
           firefox-devedition-bin
           vesktop
-
-          # fonts
-          victor-mono # programming
-          ubuntu-sans # for system use (kde, waybar, etc)
-          ubuntu-sans-mono # for system use (kde, waybar, etc)
         ];
 
         pointerCursor = {
