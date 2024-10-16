@@ -18,9 +18,8 @@
           tab_powerline_style = "slanted";
           tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
 
-          dynamic_background_opacity = "yes";
           background_blur = "1";
-          background_opacity = "0.5";
+          background_opacity = "0.8";
         };
       };
 
