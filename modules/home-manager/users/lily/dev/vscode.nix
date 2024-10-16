@@ -40,7 +40,7 @@
       userSettings = {
         editor = {
           fontSize = 16;
-          fontFamily = "'Victor Mono', 'monospace', monospace";
+          fontFamily = "'VictorMono Nerd Font', 'monospace', monospace";
           inlayHints.enabled = "offUnlessPressed";
           minimap.enabled = false;
         };
