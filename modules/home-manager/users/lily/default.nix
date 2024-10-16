@@ -16,8 +16,8 @@
       ];
 
       catppuccin = {
-        flavor = "latte";
-        # flavor = "mocha";
+        # flavor = "latte";
+        flavor = "mocha";
         accent = "lavender";
 
         pointerCursor = {
@@ -57,6 +57,19 @@
       # TODO: Make apart of pipewire setting
       services.easyeffects = {
         enable = true;
+      };
+
+      # TODO: make its own module and setting
+      programs.obs-studio = {
+        enable = true;
+        plugins = with pkgs.obs-studio-plugins; [
+          wlrobs # potentially better support when using wlroots compositors?
+          obs-backgroundremoval # for webcam
+          obs-pipewire-audio-capture # i think this is for per-application audio capture which fucks
+          obs-tuna # song information
+          input-overlay
+          obs-composite-blur # blur plugin
+        ];
       };
     };
   };
