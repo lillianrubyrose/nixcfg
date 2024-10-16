@@ -34,6 +34,7 @@
 
     environment.systemPackages = with pkgs; [
       signal-desktop
+      gitui
     ];
 
     nix.settings.trusted-users = ["lily"];
