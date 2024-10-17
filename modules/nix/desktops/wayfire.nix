@@ -21,7 +21,7 @@
 
     programs.wayfire = {
       enable = true;
-      xwayland.enable = true;
+      # xwayland.enable = true;
       plugins = with pkgs.wayfirePlugins; [
         wayfire-plugins-extra # misc
         wf-shell # gtk3 shell

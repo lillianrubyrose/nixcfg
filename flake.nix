@@ -19,6 +19,8 @@
 
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
   };
 
   outputs = {
@@ -30,6 +32,7 @@
     catppuccin,
     zed,
     darwin,
+    nixos-cosmic,
     ...
   } @ inputs: let
     mkSystem = hostname: system: pkgs:
