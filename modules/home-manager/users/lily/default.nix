@@ -69,6 +69,7 @@
           obs-tuna # song information
           input-overlay
           obs-composite-blur # blur plugin
+          obs-vaapi
         ];
       };
     };
