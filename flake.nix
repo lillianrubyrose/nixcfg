@@ -15,7 +15,8 @@
 
     catppuccin.url = "github:catppuccin/nix";
 
-    zed.url = "github:zed-industries/zed/v0.156.0-pre";
+    # zed.url = "github:zed-industries/zed/v0.156.0-pre";
+    zed.url = "github:RemcoSmitsDev/zed/debugger";
 
     darwin.url = "github:lnl7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
