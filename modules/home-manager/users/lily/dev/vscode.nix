@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: {
-  home-manager.users.lily = lib.mkIf (config.queernix.users.lily.enable && config.queernix.users.lily.dev.enable) {
+  home-manager.users.lily = lib.mkIf (config.queernix.users.lily.enable && config.queernix.users.lily.dev.enable && false) {
     programs.vscode = {
       enable = true;
       package = pkgs.vscodium;
