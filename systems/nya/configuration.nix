@@ -40,14 +40,10 @@
   queernix = {
     yubikey.enable = true;
     pipewire.enable = true;
-    # ollama = {
-    #   enable = true;
-    #   rocm = true;
-    # };
     virtualisation.libvirtd.enable = true;
     flatpak.enable = true;
     terminal-editor.helix.enable = true;
-    desktops.plasma6.enable = true;
+    desktops.gnome.enable = true;
     users.lily = {
       enable = true;
       dev.enable = true;
