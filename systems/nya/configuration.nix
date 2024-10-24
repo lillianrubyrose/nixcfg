@@ -43,7 +43,7 @@
     virtualisation.libvirtd.enable = true;
     flatpak.enable = true;
     terminal-editor.helix.enable = true;
-    desktops.gnome.enable = true;
+    desktops.plasma6.enable = true;
     users.lily = {
       enable = true;
       dev.enable = true;
