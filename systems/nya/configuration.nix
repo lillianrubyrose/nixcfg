@@ -37,6 +37,19 @@
     };
   };
 
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      fontconfig
+      icu
+      libGL
+      xorg.libX11
+      xorg.libXi
+      xorg.libICE
+      xorg.libSM
+    ];
+  };
+
   queernix = {
     yubikey.enable = true;
     pipewire.enable = true;
