@@ -16,7 +16,7 @@
 
     programs.dconf.enable = true;
 
-    environment.systemPackages = with pkgs; [ adwaita-icon-theme gnome-settings-daemon ];
+    environment.systemPackages = with pkgs; [adwaita-icon-theme gnome-settings-daemon];
     environment.sessionVariables = {
       NIX_PROFILES = "${pkgs.lib.concatStringsSep " " (
         pkgs.lib.reverseList config.environment.profiles

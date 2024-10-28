@@ -7,7 +7,7 @@
   home-manager.users.lily = lib.mkIf (config.queernix.users.lily.enable && config.queernix.desktops.gnome.enable) {
     programs.gnome-shell = {
       enable = true;
-      extensions = [ { package = pkgs.gnomeExtensions.appindicator; } ];
+      extensions = [{package = pkgs.gnomeExtensions.appindicator;}];
     };
     programs.firefox.enableGnomeExtensions = true;
 
