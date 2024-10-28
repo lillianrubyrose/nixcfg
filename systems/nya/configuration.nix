@@ -57,7 +57,7 @@
     virtualisation.libvirtd.enable = true;
     flatpak.enable = true;
     terminal-editor.helix.enable = true;
-    desktops.cosmic.enable = true;
+    desktops.sway.enable = true;
     users.lily = {
       enable = true;
       dev.enable = true;

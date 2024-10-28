@@ -51,7 +51,7 @@
         shadow_blur_radius 10
         shadow_color #1A1A1AEE
 
-        corner_radius 10
+        # corner_radius 10
         default_border pixel 3
       '';
     };
@@ -68,7 +68,7 @@
     };
 
     home.file.".config/sway/bg.jpg" = {
-      source = ../../../../../assets/wallpaper.jpg;
+      source = ./assets/wallpaper.jpg;
     };
   };
 }
