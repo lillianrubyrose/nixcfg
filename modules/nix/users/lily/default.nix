@@ -29,6 +29,7 @@
       victor-mono
       ubuntu-sans
       ubuntu-sans-mono
+      font-awesome
       (nerdfonts.override {fonts = ["VictorMono"];})
     ];
 
@@ -50,7 +51,7 @@
       LC_NUMERIC = "en_US.UTF-8";
       LC_PAPER = "en_US.UTF-8";
       LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
+      LC_TIME = "de_AT.UTF-8";
     };
 
     console = {
