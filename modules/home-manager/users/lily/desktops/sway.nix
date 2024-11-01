@@ -25,7 +25,7 @@
         result-spacing = 25;
         num-results = 5;
         font = "Ubuntu Sans Mono";
-        # background-color = "#000A";
+        background-color = lib.mkForce "#000A";
         history = true;
         fuzzy-match = true;
         drun-launch = true;
