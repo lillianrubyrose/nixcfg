@@ -5,6 +5,8 @@
   ...
 }: {
   home-manager.users.lily = lib.mkIf (config.queernix.users.lily.enable && config.queernix.desktops.sway.enable) {
+    home.packages = with pkgs; [ playerctl ];
+  
     programs.tofi = {
       enable = true;
       settings = {
@@ -36,9 +38,9 @@
           position = "top";
           height = 30;
           # output = [ "DP-1" ];
-          modules-left = [ "sway/workspaces" "privacy" ];
-          modules-center = [ "clock" ];
-          modules-right = [ "tray" "wireplumber" ];
+          modules-left = ["sway/workspaces" "privacy"];
+          modules-center = ["clock"];
+          modules-right = ["tray" "wireplumber"];
 
           "clock" = {
             timezone = "America/New_York";
@@ -52,10 +54,16 @@
       style = ./assets/waybar.css;
     };
 
+    services.dunst = {
+      enable = true;
+      configFile = ./assets/dunstrc;
+    };
+
+    services.playerctld.enable = true;
+
     wayland.windowManager.sway = {
       enable = true;
       package = pkgs.swayfx;
-      catppuccin.enable = true;
       checkConfig = false; # until https://github.com/nix-community/home-manager/issues/5379
       wrapperFeatures.gtk = true;
       systemd.enable = true;
@@ -116,6 +124,7 @@
       GDK_BACKEND = "wayland";
       XDG_SESSION_DESKTOP = "sway";
       MOZ_ENABLE_WAYLAND = "1";
+      GDK_DPI_SCALE = "1.5";
     };
 
     home.file.".config/sway/bg.jpg" = {
