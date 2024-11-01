@@ -64,14 +64,17 @@
     wayland.windowManager.sway = {
       enable = true;
       package = pkgs.swayfx;
+      catppuccin.enable = true;
       checkConfig = false; # until https://github.com/nix-community/home-manager/issues/5379
       wrapperFeatures.gtk = true;
       systemd.enable = true;
       config = rec {
         modifier = "Mod4";
         terminal = "kitty";
-        gaps.outer = 5;
-        gaps.inner = 3;
+        gaps = {
+          outer = 0;
+          inner = 3;
+        };
         bars = [];
 
         keybindings = lib.mkOptionDefault {
@@ -103,15 +106,32 @@
 
       extraConfig = ''
         blur true
+        blur_xray false
         blur_passes 3
-        blur_radius 3
+        blur_radius 8
+        blur_noise 0.01
+        blur_brightness 1
+        blur_contrast 1
 
         shadows true
-        shadow_blur_radius 10
-        shadow_color #1A1A1AEE
+        shadow_blur_radius 30
+        shadow_color #00000070
+        shadow_inactive_color #00000010
 
-        # corner_radius 10
-        default_border pixel 3
+        default_dim_inactive 0.25
+
+        default_border pixel 1
+        corner_radius 10
+
+        layer_effects "waybar" blur enable; shadows enable; corner_radius 0;
+
+        # from catppuccin
+        client.focused             $lavender        $base      $text     $lavender        $lavender
+        client.focused_inactive    $base            $base      $text     $base            $base
+        client.unfocused           $base            $base      $text     $base            $base
+        client.urgent              $peach           $base      $peach    $peach           $peach
+        client.placeholder         $overlay0        $base      $text     $overlay0        $overlay0
+        client.background          $base
       '';
     };
 
