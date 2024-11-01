@@ -1,12 +1,14 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: {
   home-manager.users.lily = lib.mkIf config.queernix.users.lily.enable {
     programs.gpg.enable = true;
     programs.git = {
       enable = true;
+      package = pkgs.gitFull;
       ignores = [
         "*~"
         "*.swp"
