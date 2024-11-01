@@ -13,8 +13,6 @@
 
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
 
-    catppuccin.url = "github:catppuccin/nix";
-
     # zed.url = "github:zed-industries/zed/v0.156.0-pre";
     zed.url = "github:RemcoSmitsDev/zed/debugger";
 
@@ -23,6 +21,8 @@
 
     nixos-cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     nixos-niri.url = "github:sodiboo/niri-flake";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs = {
@@ -31,11 +31,11 @@
     disko,
     home-manager,
     nixos-hardware,
-    catppuccin,
     zed,
     darwin,
     nixos-cosmic,
     nixos-niri,
+    stylix,
     ...
   } @ inputs: let
     mkSystem = hostname: system: pkgs:
@@ -43,7 +43,7 @@
         inherit system;
 
         specialArgs = {
-          inherit inputs home-manager zed nixpkgs-stable system catppuccin nixos-hardware hostname;
+          inherit inputs home-manager zed nixpkgs-stable system stylix nixos-hardware hostname;
         };
 
         modules = [
@@ -51,7 +51,7 @@
           ./systems/${hostname}/configuration.nix
           home-manager.nixosModules.home-manager
           disko.nixosModules.disko
-          catppuccin.nixosModules.catppuccin
+          stylix.nixosModules.stylix
         ];
       };
 
@@ -86,7 +86,7 @@
       # pufferfish.host 2C 8GB 5950x vps.
       # runs NixOS stable.
       # the VirtFusion panel doesn't have NixOS for an option so NixOS has to be installed manually with kexec images.
-      wu-vps = mkSystem "wu-vps" "x86_64-linux" nixpkgs-stable;
+      # wu-vps = mkSystem "wu-vps" "x86_64-linux" nixpkgs-stable;
     };
 
     darwinConfigurations = {
@@ -96,6 +96,7 @@
           ./modules
           ./systems/akita/configuration.nix
           home-manager.darwinModules.home-manager
+          stylix.darwinModules.stylix
         ];
       };
     };

@@ -16,7 +16,6 @@
 
       delta = {
         enable = true;
-        catppuccin.enable = true;
       };
 
       userName = "Lillian Rose";

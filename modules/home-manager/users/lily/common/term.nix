@@ -4,10 +4,15 @@
   ...
 }: {
   home-manager.users.lily = lib.mkIf config.queernix.users.lily.enable {
+    stylix.targets = {
+      kitty.enable = true;
+      bat.enable = true;
+      fish.enable = true;
+    };
+  
     programs = {
       kitty = {
         enable = true;
-        catppuccin.enable = true;
 
         settings = {
           font_family = "Victor Mono";
@@ -19,7 +24,7 @@
           tab_title_template = "{title}{' :{}:'.format(num_windows) if num_windows > 1 else ''}";
 
           background_blur = "1";
-          background_opacity = "0.8";
+          background_opacity = lib.mkForce "0.8";
         };
       };
 
@@ -118,7 +123,6 @@
       ripgrep.enable = true;
       bat = {
         enable = true;
-        catppuccin.enable = true;
       };
       eza.enable = true;
 
@@ -126,7 +130,6 @@
       man.generateCaches = true;
       fish = {
         enable = true;
-        catppuccin.enable = true;
 
         shellInit = ''
           function fish_greeting

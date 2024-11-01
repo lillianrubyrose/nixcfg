@@ -1,28 +1,55 @@
 {
   lib,
   config,
-  catppuccin,
   pkgs,
+  stylix,
   ...
 }: {
   home-manager = lib.mkIf config.queernix.users.lily.enable {
     extraSpecialArgs = {
-      inherit catppuccin;
+      inherit stylix;
     };
 
     users.lily = {
       imports = [
-        catppuccin.homeManagerModules.catppuccin
+        stylix.homeManagerModules.stylix
       ];
 
-      catppuccin = {
-        # flavor = "latte";
-        flavor = "mocha";
-        accent = "lavender";
+      stylix = {
+        enable = true;
+        autoEnable = false;
+        image = ./desktops/assets/wallpaper.jpg;
+        imageScalingMode = "fill";
 
-        pointerCursor = {
-          enable = true;
-          accent = "dark";
+        fonts = rec {
+          sansSerif = {
+            package = pkgs.ubuntu-sans;
+            name = "Ubuntu Sans";
+          };
+        
+          monospace = {
+            package = pkgs.ubuntu-sans-mono;
+            name = "Ubuntu Sans Mono";
+          };
+
+          emoji = {
+            package = pkgs.noto-fonts-emoji;
+            name = "Noto Color Emoji";
+          };
+
+          serif = sansSerif;
+        };
+
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-latte.yaml";
+
+        cursor = {
+          package = pkgs.catppuccin-cursors.latteLight;
+          name = "catpuccin-cursors-latteLight";
+        };
+
+        targets = {
+          gtk.enable = true;
+          gnome.enable = true;
         };
       };
 
@@ -33,12 +60,6 @@
           firefox-devedition-bin
           vesktop
         ];
-
-        pointerCursor = {
-          size = 32;
-          x11.enable = true;
-          gtk.enable = true;
-        };
 
         stateVersion = "24.05";
       };
@@ -51,7 +72,6 @@
         sshKeys = ["5D8B8D8A957EDA5C4784CDE7525C508B506BF655"];
       };
 
-      qt.style.catppuccin.enable = true;
       fonts.fontconfig.enable = true;
 
       # TODO: Make apart of pipewire setting

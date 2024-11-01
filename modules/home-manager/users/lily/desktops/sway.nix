@@ -6,6 +6,12 @@
 }: {
   home-manager.users.lily = lib.mkIf (config.queernix.users.lily.enable && config.queernix.desktops.sway.enable) {
     home.packages = with pkgs; [ playerctl ];
+
+    stylix.targets = {
+      sway.enable = true;
+      tofi.enable = true;
+      dunst.enable = true;
+    };
   
     programs.tofi = {
       enable = true;
@@ -19,7 +25,7 @@
         result-spacing = 25;
         num-results = 5;
         font = "Ubuntu Sans Mono";
-        background-color = "#000A";
+        # background-color = "#000A";
         history = true;
         fuzzy-match = true;
         drun-launch = true;
@@ -51,7 +57,7 @@
         };
       };
 
-      style = ./assets/waybar.css;
+      style = (builtins.readFile ./assets/waybar.css);
     };
 
     services.dunst = {
@@ -64,7 +70,6 @@
     wayland.windowManager.sway = {
       enable = true;
       package = pkgs.swayfx;
-      catppuccin.enable = true;
       checkConfig = false; # until https://github.com/nix-community/home-manager/issues/5379
       wrapperFeatures.gtk = true;
       systemd.enable = true;
@@ -91,8 +96,6 @@
         };
 
         output = {
-          "*".bg = "~/.config/sway/bg.jpg fill";
-
           "DP-1" = {
             mode = "3840x2160@240Hz";
             scale = "1.5";
@@ -124,14 +127,6 @@
         corner_radius 10
 
         layer_effects "waybar" blur enable; shadows enable; corner_radius 0;
-
-        # from catppuccin
-        client.focused             $lavender        $base      $text     $lavender        $lavender
-        client.focused_inactive    $base            $base      $text     $base            $base
-        client.unfocused           $base            $base      $text     $base            $base
-        client.urgent              $peach           $base      $peach    $peach           $peach
-        client.placeholder         $overlay0        $base      $text     $overlay0        $overlay0
-        client.background          $base
       '';
     };
 

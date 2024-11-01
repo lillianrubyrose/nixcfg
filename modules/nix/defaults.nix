@@ -1,5 +1,10 @@
 # These are what I believe to be sane defaults so these are not feature gated.
 {pkgs, ...}: {
+  stylix.homeManagerIntegration = {
+    autoImport = false;
+    followSystem = false;
+  };
+
   nix = {
     settings = {
       trusted-users = [

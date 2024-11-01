@@ -13,5 +13,5 @@
   in
     files;
 in {
-  imports = getModules ./.;
+  imports = lib.reverseList (getModules ./.);
 }
