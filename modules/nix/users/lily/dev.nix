@@ -6,11 +6,13 @@
   system,
   ...
 }: let
-  zed-fhs = pkgs.buildFHSUserEnv {
+  zed-fhs = pkgs.buildFHSEnv {
     name = "zed";
     targetPkgs = _pkgs: [zed.packages.${system}.zed-editor];
-    runScript = "zed";
-    meta.mainProgram = "zed";
+    runScript = "${zed.packages.${system}.zed-editor}/bin/zed";
+    extraInstallCommands = ''
+      ln -s "${zed.packages.${system}.zed-editor}/share" "$out/"
+    '';
   };
 in {
   options.queernix.users.lily.dev = {
